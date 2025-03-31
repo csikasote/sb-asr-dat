@@ -81,9 +81,11 @@ class DomainClassifier(torch.nn.Module):
         self.layers = torch.nn.Sequential(
             torch.nn.Linear(input_size, hidden_size),
             torch.nn.ReLU(),
-            torch.nn.Linear(hidden_size, hidden_size//2),
+            torch.nn.Linear(hidden_size, hidden_size),
             torch.nn.ReLU(),
-            torch.nn.Linear(hidden_size//2, 1),
+            torch.nn.Linear(hidden_size, hidden_size),
+            torch.nn.ReLU(),
+            torch.nn.Linear(hidden_size, 1),
             torch.nn.Sigmoid()
         )
 
